@@ -1,0 +1,38 @@
+# Render Infrastructure blueprint configuration
+# Doc: https://render.com/docs/yaml-spec
+
+services:
+  # 1. Full-Stack Node.js Portal (React Frontend + Express Backend)
+  - type: web
+    name: student-information-portal
+    env: node
+    plan: free # Free tier eligible
+    
+    # Render default Node build step usually runs "npm run build" or "yarn build".
+    # By setting the Build Command to "npm install && npm run build", we guarantee 
+    # that all devDependencies (including vite, typescript, and esbuild) are fully 
+    # resolved before compiling the assets.
+    buildCommand: "npm install && npm run build"
+    
+    # Start command launches our compiled, bundled server.cjs
+    startCommand: "npm run start"
+    
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: GEMINI_API_KEY
+        sync: false # Set this in Render's dashboard for AI-powered REST endpoint features
+
+  # 2. Reference: Configuration for a Java/Spring Boot Web Service 
+  # (If you decide to deploy the actual Spring Boot 3 Java project in a separate repository)
+  # - type: web
+  #   name: sims-spring-boot-backend
+  #   env: java
+  #   plan: free
+  #   buildCommand: "./mvnw clean package -DskipTests"
+  #   startCommand: "java -jar target/student-management-system-1.0.0.jar"
+  #   envVars:
+  #     - key: SPRING_PROFILES_ACTIVE
+  #       value: prod
