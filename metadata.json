@@ -1,0 +1,6 @@
+{
+  "name": "Student Information Management System (SIMS)",
+  "description": "An enterprise-grade Student Information Management System (SIMS) with role-based access control, interactive dashboard, live Express API simulator, interactive ER diagram, and complete Java Spring Boot 3 + Maven project files.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
